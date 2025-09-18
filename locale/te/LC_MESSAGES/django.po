@@ -1,0 +1,78 @@
+# Telugu translations for AgriNest
+# Copyright (C) 2025
+# This file is distributed under the same license as the AgriNest project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AgriNest 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-18 19:37+0530\n"
+"PO-Revision-Date: 2025-09-18 20:00+0530\n"
+"Last-Translator: Your Name <you@example.com>\n"
+"Language-Team: Telugu\n"
+"Language: te\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\accounts\views.py:40
+msgid "Account verified successfully!"
+msgstr "ఖాతా విజయవంతంగా ధృవీకరించబడింది!"
+
+#: .\accounts\views.py:43
+msgid "Invalid OTP"
+msgstr "చెల్లని OTP"
+
+#: .\templates\products\home.html:6
+msgid "Welcome to AgriNest"
+msgstr "అగ్రి నెస్ట్‌కు స్వాగతం"
+
+#: .\templates\products\home.html:7
+msgid "Your one-stop solution for all agricultural needs"
+msgstr "మీ అన్ని వ్యవసాయ అవసరాలకు ఒకే చోట పరిష్కారం"
+
+#: .\templates\products\home.html:11
+msgid "Season Offers"
+msgstr "సీజన్ ఆఫర్లు"
+
+#: .\templates\products\home.html:21
+msgid "Add to Cart"
+msgstr "కార్ట్‌లో వేసుకోండి"
+
+#: .\templates\products\home.html:25
+msgid "No featured products yet."
+msgstr "ఇంకా ఫీచర్ చేయబడిన ఉత్పత్తులు లేవు."
+
+#: .\templates\support\pool_list.html:4 .\templates\support\pool_list.html:7
+msgid "Crop Support Pools"
+msgstr "పంట మద్దతు నిధులు"
+
+#: .\templates\support\pool_list.html:17
+msgid "Target:"
+msgstr "లక్ష్యం:"
+
+#: .\templates\support\pool_list.html:18
+msgid "Raised:"
+msgstr "సేకరించబడింది:"
+
+#: .\templates\support\pool_list.html:19
+msgid "Created by:"
+msgstr "సృష్టించినవారు:"
+
+#: .\templates\support\pool_list.html:21
+msgid "Active"
+msgstr "క్రియాశీలం"
+
+#: .\templates\support\pool_list.html:21
+msgid "Inactive"
+msgstr "నిష్క్రియ"
+
+#: .\templates\support\pool_list.html:25
+msgid "Created on"
+msgstr "సృష్టించిన తేదీ"
+
+#: .\templates\support\pool_list.html:34
+msgid "No crop support pools available yet."
+msgstr "ఇప్పటికీ పంట మద్దతు నిధులు అందుబాటులో లేవు."
