@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Payment History</h2>
+
+{% if orders %}
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <th>Order Number</th>
+        <th>Total Amount</th>
+        <th>Payment Status</th>
+        <th>Date</th>
+        <th>Details</th>
+    </tr>
+    {% for order in orders %}
+    <tr>
+        <td>{{ order.order_number }}</td>
+        <td>{{ order.total_amount }}</td>
+        <td>{{ order.payment_status }}</td>
+        <td>{{ order.created_at|date:"Y-m-d H:i" }}</td>
+        <td><a href="{% url 'orders:order_detail' order.id %}">View</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No completed payments yet.</p>
+{% endif %}
+
+<a href="{% url 'orders:order_list' %}">Back to Orders</a>
+{% endblock %}

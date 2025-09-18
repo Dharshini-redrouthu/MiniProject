@@ -1,0 +1,34 @@
+<!-- {% extends 'base.html' %}
+{% block title %}Zero-Waste Surplus{% endblock %}
+{% block content %}
+<h1 class="mb-4">Zero-Waste Surplus</h1>
+<div class="row">
+  {% for item in items %}
+  <div class="col-md-3">
+    <div class="card mb-4 shadow-sm">
+      {% if item.product.image %}
+        <img src="{{ item.product.image.url }}" class="card-img-top" alt="{{ item.product.name }}">
+      {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ item.product.name }}</h5>
+        <p>Discount Price: ₹{{ item.discounted_price }}</p>
+        <p>Expiry: {{ item.expiry_date }}</p>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <p>No surplus items.</p>
+  {% endfor %}
+</div>
+{% endblock %} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>

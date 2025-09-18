@@ -1,0 +1,118 @@
+<!-- AgriNest/templates/pages/notifications.html -->
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans "Notifications" %}{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-12">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2>
+        <i class="fas fa-bell text-success me-2"></i>
+        {% trans "Notifications" %}
+      </h2>
+      <button class="btn btn-outline-success btn-sm" onclick="markAllRead()">
+        {% trans "Mark All as Read" %}
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Notification Categories -->
+<div class="row mb-4">
+  <div class="col-12">
+    <ul class="nav nav-pills nav-justified">
+      <li class="nav-item">
+        <a class="nav-link active" data-bs-toggle="pill" href="#all">{% trans "All" %}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="pill" href="#orders">{% trans "Orders" %}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="pill" href="#support">{% trans "Support" %}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="pill" href="#system">{% trans "System" %}</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="tab-content">
+  <!-- All Notifications -->
+  <div class="tab-pane fade show active" id="all">
+    <div class="card">
+      <div class="card-body">
+        {% if user.is_authenticated %}
+          <!-- Sample notifications -->
+          <div class="notification-item border-bottom pb-3 mb-3">
+            <div class="d-flex">
+              <div class="flex-shrink-0">
+                <div class="bg-success rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                  <i class="fas fa-check text-white"></i>
+                </div>
+              </div>
+              <div class="flex-grow-1 ms-3">
+                <h6 class="mb-1">{% trans "Order Confirmed" %}</h6>
+                <p class="mb-1 text-muted">{% trans "Your order #ORD123 has been confirmed and is being prepared for delivery." %}</p>
+                <small class="text-muted">2 {% trans "hours ago" %}</small>
+              </div>
+              <div class="flex-shrink-0">
+                <span class="badge bg-primary rounded-pill">{% trans "New" %}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="notification-item border-bottom pb-3 mb-3">
+            <div class="d-flex">
+              <div class="flex-shrink-0">
+                <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                  <i class="fas fa-truck text-white"></i>
+                </div>
+              </div>
+              <div class="flex-grow-1 ms-3">
+                <h6 class="mb-1">{% trans "Out for Delivery" %}</h6>
+                <p class="mb-1 text-muted">{% trans "Your organic vegetables are out for delivery and will arrive soon." %}</p>
+                <small class="text-muted">5 {% trans "hours ago" %}</small>
+              </div>
+              <div class="flex-shrink-0">
+                <i class="fas fa-circle text-muted" style="font-size: 8px;"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="notification-item border-bottom pb-3 mb-3">
+            <div class="d-flex">
+              <div class="flex-shrink-0">
+                <div class="bg-info rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                  <i class="fas fa-gift text-white"></i>
+                </div>
+              </div>
+              <div class="flex-grow-1 ms-3">
+                <h6 class="mb-1">{% trans "Special Offer" %}</h6>
+                <p class="mb-1 text-muted">{% trans "Get 20% off on all organic products this weekend!" %}</p>
+                <small class="text-muted">1 {% trans "day ago" %}</small>
+              </div>
+              <div class="flex-shrink-0">
+                <span class="badge bg-success rounded-pill">{% trans "Offer" %}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="notification-item border-bottom pb-3 mb-3">
+            <div class="d-flex">
+              <div class="flex-shrink-0">
+                <div class="bg-success rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                  <i class="fas fa-heart text-white"></i>
+                </div>
+              </div>
+              <div class="flex-grow-1 ms-3">
+                <h6 class="mb-1">{% trans "Support Pool Contribution" %}</h6>
+                <p class="mb-1 text-muted">{% trans "Thank you for contributing ₹500 to the Drought Relief Support Pool." %}</p>
+                <small class="text-muted">2 {% trans "days ago" %}</small>
+              </div>
+              <div class="flex-shrink-0">
+                <i class="fas fa-circle text-muted" style="font-size: 8px;"></i>
+              </div>
+            </div>

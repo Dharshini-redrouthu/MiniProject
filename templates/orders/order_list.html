@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Your Orders / Cart</h2>
+
+{% if orders %}
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <th>Order Number / Cart Item</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+        <th>Actions</th>
+    </tr>
+    {% for order in orders %}
+        {% if order.items.all %}
+            {% for item in order.items.all %}
+            <tr>
+                <td>{{ order.order_number }}</td>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.line_total }}</td>
+                <td><a href="{% url 'orders:order_detail' order.id %}">View</a></td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="6">No items yet in this order.</td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+{% else %}
+<p>You have no orders yet.</p>
+{% endif %}
+
+{% endblock %}

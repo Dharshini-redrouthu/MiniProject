@@ -1,0 +1,153 @@
+<!-- AgriNest/templates/pages/about.html -->
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans "About AgriNest" %}{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-12">
+    <!-- Hero Section -->
+    <div class="bg-success text-white rounded-lg p-5 mb-5 text-center">
+      <img src="{% static 'images/logo_name.jpg' %}" alt="AgriNest Logo" width="100" height="100" class="mb-3 rounded-circle">
+      <h1 class="display-4 fw-bold">{% trans "About AgriNest" %}</h1>
+      <p class="lead">{% trans "Connecting farmers, reducing waste, building sustainable communities" %}</p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <!-- Mission Section -->
+  <div class="col-lg-6 mb-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <div class="d-flex align-items-center mb-3">
+          <i class="fas fa-bullseye text-success fs-2 me-3"></i>
+          <h3 class="card-title mb-0">{% trans "Our Mission" %}</h3>
+        </div>
+        <p class="card-text">
+          {% trans "AgriNest is dedicated to creating a sustainable agricultural ecosystem that connects farmers directly with consumers, reduces food waste, and promotes organic farming practices across rural communities." %}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vision Section -->
+  <div class="col-lg-6 mb-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <div class="d-flex align-items-center mb-3">
+          <i class="fas fa-eye text-success fs-2 me-3"></i>
+          <h3 class="card-title mb-0">{% trans "Our Vision" %}</h3>
+        </div>
+        <p class="card-text">
+          {% trans "To build a world where every farmer has access to fair markets, every community reduces food waste to zero, and sustainable agriculture thrives through technology and collaboration." %}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Features Section -->
+<div class="row mb-5">
+  <div class="col-12">
+    <h2 class="text-center mb-4">{% trans "What We Offer" %}</h2>
+  </div>
+  
+  <div class="col-md-4 mb-4">
+    <div class="card text-center h-100 shadow-sm">
+      <div class="card-body">
+        <i class="fas fa-store text-success fs-1 mb-3"></i>
+        <h5 class="card-title">{% trans "Direct Marketplace" %}</h5>
+        <p class="card-text">{% trans "Connect directly with local farmers and buy fresh, organic produce without middlemen." %}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-4">
+    <div class="card text-center h-100 shadow-sm">
+      <div class="card-body">
+        <i class="fas fa-recycle text-success fs-1 mb-3"></i>
+        <h5 class="card-title">{% trans "Zero-Waste Initiative" %}</h5>
+        <p class="card-text">{% trans "Reduce food waste by connecting surplus produce with those who need it most." %}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-4">
+    <div class="card text-center h-100 shadow-sm">
+      <div class="card-body">
+        <i class="fas fa-hands-helping text-success fs-1 mb-3"></i>
+        <h5 class="card-title">{% trans "Support Pools" %}</h5>
+        <p class="card-text">{% trans "Community-driven support system to help farmers during challenging times." %}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Team Section -->
+<div class="row mb-5">
+  <div class="col-12">
+    <h2 class="text-center mb-4">{% trans "Our Impact" %}</h2>
+  </div>
+  
+  <div class="col-md-3 mb-4">
+    <div class="card text-center bg-light">
+      <div class="card-body">
+        <h3 class="text-success">500+</h3>
+        <p class="mb-0">{% trans "Active Farmers" %}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 mb-4">
+    <div class="card text-center bg-light">
+      <div class="card-body">
+        <h3 class="text-success">2000+</h3>
+        <p class="mb-0">{% trans "Happy Customers" %}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 mb-4">
+    <div class="card text-center bg-light">
+      <div class="card-body">
+        <h3 class="text-success">75%</h3>
+        <p class="mb-0">{% trans "Waste Reduction" %}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 mb-4">
+    <div class="card text-center bg-light">
+      <div class="card-body">
+        <h3 class="text-success">₹50L+</h3>
+        <p class="mb-0">{% trans "Farmer Income Increase" %}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact Section -->
+<div class="row">
+  <div class="col-12">
+    <div class="bg-light p-4 rounded">
+      <h3 class="text-center mb-4">{% trans "Get In Touch" %}</h3>
+      <div class="row text-center">
+        <div class="col-md-4 mb-3">
+          <i class="fas fa-envelope text-success fs-3 mb-2"></i>
+          <p><strong>{% trans "Email" %}</strong><br>contact@agrinest.com</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <i class="fas fa-phone text-success fs-3 mb-2"></i>
+          <p><strong>{% trans "Phone" %}</strong><br>+91 9876543210</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <i class="fas fa-map-marker-alt text-success fs-3 mb-2"></i>
+          <p><strong>{% trans "Address" %}</strong><br>Bhimavaram, Andhra Pradesh, India</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

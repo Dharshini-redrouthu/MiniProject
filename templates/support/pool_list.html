@@ -1,0 +1,52 @@
+<!-- {% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Crop Support Pools" %}{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mb-4">{% trans "Crop Support Pools" %}</h1>
+
+    {% if pools %}
+        <div class="row">
+            {% for pool in pools %}
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title text-success fw-bold">{{ pool.name }}</h5>
+                            <p class="card-text">
+                                <strong>{% trans "Target:" %}</strong> ₹{{ pool.target_amount }} <br>
+                                <strong>{% trans "Raised:" %}</strong> ₹{{ pool.raised_amount }} <br>
+                                <strong>{% trans "Created by:" %}</strong> {{ pool.created_by }} <br>
+                                <span class="badge {% if pool.is_active %}bg-success{% else %}bg-secondary{% endif %}">
+                                    {% if pool.is_active %}
+                                        {% trans "Active" %}
+                                    {% else %}
+                                        {% trans "Inactive" %}
+                                    {% endif %}
+                                </span>
+                            </p>
+                            <p class="text-muted small">
+                                {% trans "Created on" %} {{ pool.created_at|date:"M d, Y" }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info text-center">
+            {% trans "No crop support pools available yet." %}
+        </div>
+    {% endif %}
+{% endblock %} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Order Details - {{ order.order_number }}</h2>
+<p>Status: {{ order.status }} | Payment: {{ order.payment_status }}</p>
+<p>Total Amount: {{ order.total_amount }}</p>
+<p>Shipping Address: {{ order.shipping_address }}</p>
+
+<h3>Items:</h3>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+    </tr>
+    {% for item in order.items.all %}
+    <tr>
+        <td>{{ item.product.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.price }}</td>
+        <td>{{ item.line_total }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% if order.delivery %}
+<h3>Delivery Info:</h3>
+<p>Courier: {{ order.delivery.courier }}</p>
+<p>Tracking Code: {{ order.delivery.tracking_code }}</p>
+<p>Status: {{ order.delivery.status }}</p>
+<p>Estimated Delivery Date: {{ order.delivery.estimated_delivery_date }}</p>
+{% endif %}
+
+<a href="{% url 'orders:order_list' %}">Back to Orders</a>
+{% endblock %}

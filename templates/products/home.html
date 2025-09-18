@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+<section class="hero-banner">
+  <div class="hero-content">
+    <h1>{% trans "Welcome to AgriNest" %}</h1>
+    <p>{% trans "Your one-stop solution for all agricultural needs" %}</p>
+  </div>
+</section>
+
+<h2>{% trans "Season Offers" %}</h2>
+<div class="products-grid">
+  {% for p in featured_products %}
+    <div class="product-card">
+      <div class="product-image">🌱</div>
+      <div class="product-info">
+        <div class="product-title">{{ p.name }}</div>
+        <div class="product-price">
+          <span class="current-price">₹{{ p.get_price }}</span>
+        </div>
+        <a class="btn btn-success" href="{% url 'products:add_to_cart' p.id %}">{% trans "Add to Cart" %}</a>
+      </div>
+    </div>
+  {% empty %}
+    <p>{% trans "No featured products yet." %}</p>
+  {% endfor %}
+  
+</div>
+{% endblock %}

@@ -1,0 +1,323 @@
+<!-- AgriNest/templates/includes/navbar.html -->
+{% load static i18n %}
+
+<style>
+/* Enhanced navbar styles */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.nav-link {
+    transition: all 0.3s ease;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: #ffc107 !important;
+    transform: translateY(-2px);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    background-color: #ffc107;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+/* Profile dropdown styles */
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    margin-top: 5px;
+    min-width: 180px;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #28a745;
+    color: white;
+    transform: translateX(5px);
+}
+
+/* Cart badge styles */
+.cart-container {
+    position: relative;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Language switcher styles */
+.language-selector {
+    border-radius: 20px;
+    border: 2px solid #ffffff50;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.language-selector:focus {
+    border-color: #ffc107;
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+    background: rgba(255,255,255,0.2);
+}
+
+.language-selector option {
+    color: black;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-nav .nav-item {
+        text-align: center;
+        margin: 5px 0;
+    }
+    
+    .language-selector {
+        margin-top: 10px;
+        width: 100%;
+    }
+}
+
+/* User role badge */
+.role-badge {
+    font-size: 0.6rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: 5px;
+}
+
+/* Notification styles */
+.notification-dot {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    background: #dc3545;
+    border-radius: 50%;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+}
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-lg sticky-top">
+  <div class="container">
+    <!-- Logo + Brand Name -->
+    <a class="navbar-brand d-flex align-items-center" href="{% url 'products:home' %}">
+      <img src="{% static 'images/logo_name.jpg' %}" 
+           alt="{% trans 'AgriNest Logo' %}" 
+           width="50" height="50" 
+           class="me-2 rounded-circle"> 
+      <span class="fw-bold">{% trans "AgriNest" %}</span>
+    </a>
+
+    <!-- Mobile Toggle Button -->
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navigation Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <!-- Home -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'products:home' %}">
+            <i class="fas fa-home me-1"></i>{% trans "Home" %}
+          </a>
+        </li>
+        
+        <!-- Products -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'products:product_list' %}">
+            <i class="fas fa-seedling me-1"></i>{% trans "Products" %}
+          </a>
+        </li>
+        
+        <!-- Zero-Waste/Surplus -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'surplus:surplus_list' %}">
+            <i class="fas fa-recycle me-1"></i>{% trans "Zero-Waste" %}
+          </a>
+        </li>
+        
+        <!-- Support Pools -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'support:pool_list' %}">
+            <i class="fas fa-hands-helping me-1"></i>{% trans "Support Pools" %}
+          </a>
+        </li>
+        
+        <!-- Stories -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'stories:story_list' %}">
+            <i class="fas fa-book-open me-1"></i>{% trans "Stories" %}
+          </a>
+        </li>
+
+        <!-- About -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'about' %}">
+            <i class="fas fa-info-circle me-1"></i>{% trans "About" %}
+          </a>
+        </li>
+      </ul>
+
+      <!-- Right Side Items -->
+      <ul class="navbar-nav align-items-center">
+        {% if user.is_authenticated %}
+          <!-- Cart/Orders with Payment Symbol -->
+          <li class="nav-item me-3">
+            <a class="nav-link cart-container" href="{% url 'orders:order_list' %}">
+              <i class="fas fa-shopping-cart fs-5"></i>
+              {% if user.orders.count > 0 %}
+                <span class="badge bg-warning text-dark cart-badge">
+                  {{ user.orders.count }}
+                </span>
+              {% endif %}
+            </a>
+          </li>
+
+          <!-- Payment/Wallet -->
+          <li class="nav-item me-3">
+            <a class="nav-link position-relative" href="{% url 'orders:payment_history' %}">
+              <i class="fas fa-wallet fs-5"></i>
+              <span class="notification-dot"></span>
+            </a>
+          </li>
+
+          <!-- Notifications -->
+          <li class="nav-item me-3">
+            <a class="nav-link position-relative" href="{% url 'notifications' %}">
+              <i class="fas fa-bell fs-5"></i>
+              {% if user.unread_notifications.count > 0 %}
+                <span class="badge bg-danger cart-badge">
+                  {{ user.unread_notifications.count }}
+                </span>
+              {% endif %}
+            </a>
+          </li>
+
+          <!-- Profile Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" 
+               href="#" id="profileDropdown" role="button" 
+               data-bs-toggle="dropdown" aria-expanded="false">
+              {% if user.profile.photo %}
+                <img src="{{ user.profile.photo.url }}" 
+                     alt="Profile" width="30" height="30" 
+                     class="rounded-circle me-2">
+              {% else %}
+                <i class="fas fa-user-circle fs-4 me-2"></i>
+              {% endif %}
+              <span class="d-none d-lg-inline">
+                {{ user.first_name|default:user.username }}
+                <span class="badge bg-secondary role-badge">{{ user.role|title }}</span>
+              </span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end animate__animated animate__fadeIn" aria-labelledby="profileDropdown">
+              <li>
+                <a class="dropdown-item" href="{% url 'accounts:profile' %}">
+                  <i class="fas fa-user me-2"></i>{% trans "My Profile" %}
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'orders:order_list' %}">
+                  <i class="fas fa-list me-2"></i>{% trans "My Orders" %}
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'accounts:settings' %}">
+                  <i class="fas fa-cog me-2"></i>{% trans "Settings" %}
+                </a>
+              </li>
+              {% if user.role == 'farmer' %}
+              <li>
+                <a class="dropdown-item" href="{% url 'products:add_product' %}">
+                  <i class="fas fa-plus me-2"></i>{% trans "Add Product" %}
+                </a>
+              </li>
+              {% endif %}
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <a class="dropdown-item text-danger" href="{% url 'accounts:logout' %}">
+                  <i class="fas fa-sign-out-alt me-2"></i>{% trans "Logout" %}
+                </a>
+              </li>
+            </ul>
+          </li>
+        {% else %}
+          <!-- Login/Register for non-authenticated users -->
+          <li class="nav-item me-2">
+            <a class="nav-link" href="{% url 'accounts:login' %}">
+              <i class="fas fa-sign-in-alt me-1"></i>{% trans "Login" %}
+            </a>
+          </li>
+          <li class="nav-item me-3">
+            <a class="btn btn-outline-light btn-sm" href="{% url 'accounts:signup' %}">
+              {% trans "Sign Up" %}
+            </a>
+          </li>
+        {% endif %}
+
+        <!-- Language Switcher -->
+        <li class="nav-item">
+          <form action="{% url 'set_language' %}" method="post" class="mb-0">
+            {% csrf_token %}
+            <select name="language" onchange="this.form.submit()" 
+                    class="form-select form-select-sm language-selector">
+              <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>
+                🇺🇸 EN
+              </option>
+              <option value="te" {% if LANGUAGE_CODE == 'te' %}selected{% endif %}>
+                🇮🇳 తె
+              </option>
+            </select>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Add Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">

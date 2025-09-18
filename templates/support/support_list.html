@@ -1,0 +1,32 @@
+<!-- #support_list.html
+{% extends 'base.html' %}
+{% block title %}Crop Support Pools{% endblock %}
+{% block content %}
+<h1 class="mb-4">Crop Support Pools</h1>
+<div class="row">
+  {% for pool in pools %}
+  <div class="col-md-4">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">{{ pool.name }}</h5>
+        <p>Target: ₹{{ pool.target_amount }}</p>
+        <p>Raised: ₹{{ pool.raised_amount }}</p>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <p>No support pools yet.</p>
+  {% endfor %}
+</div>
+{% endblock %} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>

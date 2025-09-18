@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5">
+    <h2>Account Settings</h2>
+    <p>Manage your account information and preferences here.</p>
+
+    <div class="card p-3 mt-3">
+        <h5>Profile</h5>
+        <p>Name: {{ user.get_full_name }}</p>
+        <p>Email: {{ user.email }}</p>
+        <a href="{% url 'accounts:profile' %}" class="btn btn-primary btn-sm">Edit Profile</a>
+    </div>
+
+    <div class="card p-3 mt-3">
+        <h5>Password</h5>
+        <p>Change your account password</p>
+        <a href="{% url 'password_change' %}" class="btn btn-warning btn-sm">Change Password</a>
+    </div>
+
+    <div class="card p-3 mt-3">
+        <h5>Preferences</h5>
+        <p>Customize your notifications and preferences here.</p>
+        <a href="#" class="btn btn-secondary btn-sm">Manage Preferences</a>
+    </div>
+</div>
+
+{% endblock %}
